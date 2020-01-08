@@ -9,11 +9,8 @@ async function main(){
 
 	function loadData(){
 		return ['films', 'people', 'planets', 'species', 'starships', 'vehicles'].map(async (end) => {
-			//const result = await grabData(end);	//in order to return an iterable object
-			return grabData(end);
-			//Would like to get this working for brevity of code.
-			//If I can't make it work, I have to draw up individual divs for each of the datasets. (or forego ID's)
-			//return { name : `${end}`, [end] : result };	
+			const result = grabData(end);
+			return { name : `${end}`, [end] : await result };	
 		});
 	}
 
@@ -32,12 +29,12 @@ async function main(){
 	[films, people, planets, species, starships, vehicles].map(dataSet => {
 		return displayData(dataSet);
 	});
-	console.log('films:', films.results);
-	console.log('people:', people.results);
-	console.log('planets:', planets.results);
-	console.log('species:', species.results);
-	console.log('starships:', starships.results);
-	console.log('vehicles:', vehicles.results);
+	console.log('films:', films);
+	console.log('people:', people);
+	console.log('planets:', planets);
+	console.log('species:', species);
+	console.log('starships:', starships);
+	console.log('vehicles:', vehicles);
 }
 
 main();
