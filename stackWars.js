@@ -1,5 +1,5 @@
 //api header: 	http://star-cors.herokuapp.com/???
-//endpoints: 	films, people, planets, species, starships, vehicles
+//endpoints: 	films, people, starships, vehicles
 
 async function main(){
 	const grabData = async (endpoint) => {
@@ -8,7 +8,7 @@ async function main(){
 	}
 
 	const loadData = () => {
-		return ['films', 'people', 'planets', 'species', 'starships', 'vehicles'].map(async (end) => {
+		return ['films', 'people', 'starships', 'vehicles'].map(async (end) => {
 			const result = grabData(end);
 			return [{ name : `${end}`, [end] : await result }];	
 		});
@@ -81,7 +81,7 @@ async function main(){
 		`;	
 	}
 
-	[films, people, planets, species, starships, vehicles] = await Promise.all(loadData());
+	[films, people, starships, vehicles] = await Promise.all(loadData());
 
 	displayData([films, people, starships, vehicles]);
 	
